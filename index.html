@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Wordle</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+</head>
+<body>
+
+    <div class="btn" id="reiniciar" onclick="reiniciar();"></div>
+    <div class="btn" id="ajuda" onclick="mostrarPopup(ajuda)"></div>
+    <div id="popup">
+        <div id="popup_text">Texto.</div>
+        <div id="fechar" onclick="fecharPopup(document.getElementById('popup'))"></div>
+    </div>
+    <table id="table">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div id="input">
+        <input id="inputText" type="text" maxlength="5">
+        <input id="inputButton" type="button" value="Enter" onclick="input(document.getElementById('inputText').value)">
+    </div>
+    <script src='script.js'></script>
+</body>
+</html>
