@@ -2,7 +2,109 @@ let inputText = document.getElementById("inputText");
 let tbody = document.getElementById("table").children[0];
 let tentativa = 0;
 let vitoria = false;
-let palavras = [];
+let palavras = [
+      "amigo",
+      "banco",
+      "canto",
+      "dardo",
+      "estar",
+      "falar",
+      "gosto",
+      "haste",
+      "ideia",
+      "jogar",
+      "lugar",
+      "mundo",
+      "nuvem",
+      "olhar",
+      "pular",
+      "quase",
+      "risco",
+      "saber",
+      "tocar",
+      "ultra",
+      "vazio",
+      "zumbi",
+      "abrir",
+      "bater",
+      "casar",
+      "dizer",
+      "etapa",
+      "festa",
+      "girar",
+      "hotel",
+      "igual",
+      "jovem",
+      "lento",
+      "mover",
+      "nobre",
+      "ousar",
+      "ponto",
+      "queda",
+      "rival",
+      "sinal",
+      "tigre",
+      "unido",
+      "viver",
+      "zebra",
+      "achar",
+      "bicho",
+      "corte",
+      "doido",
+      "ecoar",
+      "fugir",
+      "golpe",
+      "humor",
+      "ideal",
+      "junto",
+      "lutar",
+      "macho",
+      "ninho",
+      "obter",
+      "pista",
+      "quilo",
+      "rosto",
+      "sabor",
+      "tenso",
+      "urgir",
+      "vasto",
+      "zanga",
+      "acaso",
+      "bater",
+      "cesto",
+      "dorso",
+      "exato",
+      "fosso",
+      "grito",
+      "harpa",
+      "imune",
+      "jirau",
+      "lousa",
+      "manga",
+      "nuvem",
+      "opaco",
+      "pomar",
+      "quota",
+      "redor",
+      "sutil",
+      "trufa",
+      "usura",
+      "vulgo",
+      "xerox",
+      "zunir",
+      "agudo",
+      "besta",
+      "cacto",
+      "dengo",
+      "ebrio",
+      "fenda",
+      "giria",
+      "hífen",
+      "ícone",
+      "júlia",
+      "lápis",
+      "mútuo"
+    ];
 let palavra = "";
 let verde = 2;
 let amarelo = 1;
@@ -20,12 +122,6 @@ let ajuda = `
     <li><Strong>Vermelho:</Strong> Letra não presente na palavra</li>
 </ul>`
 
-document.addEventListener('keydown', function(e) {
-    if(e.key == "Enter"){
-      document.getElementById("inputButton").click();
-    }
-});
-
 function reiniciar() {
     tentativa = 0;
     vitoria = false;
@@ -42,27 +138,6 @@ function clear() {
             tds[j].innerHTML = "";
         }
         
-    }
-}
-
-
-async function carregarJSON() {
-    try {
-      // Faz a requisição para o arquivo JSON
-      const response = await fetch('palavras.json');
-      
-      // Verifica se a requisição foi bem-sucedida
-      if (!response.ok) {
-          throw new Error('Erro ao carregar o arquivo JSON');
-        }
-        
-        // Converte a resposta para JSON
-        const data = await response.json();
-        palavras = data.palavras;
-        palavra = palavras[random(0, palavras.length)].toUpperCase();
-        console.log(palavra)
-    } catch (error) {
-        console.error('Erro:', error);
     }
 }
 
@@ -108,8 +183,7 @@ function numeroParaString(numero) {
 }
 
 function input(palavraIn) {
-    palavraIn = palavraIn.toUpperCase();
-
+    
     if (vitoria || tentativa == 7) {
         return;
     }
@@ -117,6 +191,8 @@ function input(palavraIn) {
     if (palavraIn.length != 5) {
         return;
     }
+
+    palavraIn = palavraIn.toUpperCase();
     output = [vermelho, vermelho, vermelho, vermelho, vermelho];
     vitoria = true;
     for (let i = 0; i < 5; i++) {
@@ -141,5 +217,4 @@ function input(palavraIn) {
     }
 }
 
-// Chama a função para carregar o JSON
-carregarJSON();
+palavra = palavras[random(0, palavras.length)].toUpperCase();
