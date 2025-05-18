@@ -106,6 +106,7 @@ let palavras = [
       "mútuo"
     ];
 let palavra = "";
+let letrasPresentes = new Array(26);
 let verde = 2;
 let amarelo = 1;
 let vermelho = 0;
@@ -126,6 +127,12 @@ function reiniciar() {
     tentativa = 0;
     vitoria = false;
     palavra = palavras[random(0, palavras.length)].toUpperCase();
+    for (let i = 0; i < 26; i++) {
+        letrasPresentes[i] = 0;
+    }
+    for (let i = 0; i < 5; i++) {
+        letrasPresentes[(palavra.charAt(i)).charCodeAt(0) - 65]++;
+    }
     clear();
 }
 
@@ -147,15 +154,6 @@ function random(min, max) {
 
 function removerAcentos(palavra) {
     return palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-function temLetra(letra, palavra) {
-    for (let i = 0; i < palavra.length; i++) {
-        if (letra == palavra.charAt(i)) {
-            return true;
-        }
-    }
-    return false;
 }
 
 function mostrarPopup(texto) {
@@ -183,7 +181,7 @@ function numeroParaString(numero) {
 }
 
 function input(palavraIn) {
-    
+
     if (vitoria || tentativa == 7) {
         return;
     }
@@ -191,30 +189,54 @@ function input(palavraIn) {
     if (palavraIn.length != 5) {
         return;
     }
-
-    palavraIn = palavraIn.toUpperCase();
-    output = [vermelho, vermelho, vermelho, vermelho, vermelho];
+    palavraIn = removerAcentos(palavraIn.toUpperCase());
+    letrasPresentesTemp = new Array(26);
+    for (let i = 0; i < 26; i++) {
+        letrasPresentesTemp[i] = letrasPresentes[i];
+        
+    }
     vitoria = true;
     for (let i = 0; i < 5; i++) {
         letraIn = palavraIn.charAt(i);
         letra = palavra.charAt(i);
         if (letraIn == removerAcentos(letra)) {
-            output[i] = verde;
-        } else if (temLetra(letraIn, palavra)) {
-            output[i] = amarelo;
-            vitoria = false;
-        } else {
-            vitoria = false;
+            letrasPresentesTemp[letraIn.charCodeAt(0) - 65]--;
+            celula = tbody.children[tentativa].children[i];
+            celula.innerHTML = letra;
+            celula.style = "background-color: " + numeroParaString(verde);
         }
-        celula = tbody.children[tentativa].children[i];
-        celula.innerHTML = letraIn;
-        celula.style = "background-color: " + numeroParaString(output[i]);
+        
+    }
+    for (let i = 0; i < 5; i++) {
+        output = vermelho;
+        letraIn = palavraIn.charAt(i);
+        letra = palavra.charAt(i);
+        if (letraIn != removerAcentos(letra)) {
+            if (letrasPresentesTemp[letraIn.charCodeAt(0) - 65] > 0) {
+                output = amarelo;
+                letrasPresentesTemp[letraIn.charCodeAt(0) - 65]--;
+                vitoria = false;
+            } else {
+                vitoria = false;
+            }
+            celula = tbody.children[tentativa].children[i];
+            celula.style = "background-color: " + numeroParaString(output);
+            celula.innerHTML = letraIn;
+        }
     }
     tentativa++;
     if (!vitoria && tentativa == 7) {
-        //Mostrar palavra.
         mostrarPopup("A palavra era " + palavra + ".");
+    } else if (vitoria && tentativa == 7) {
+        mostrarPopup("Vitória!");
     }
 }
 
 palavra = palavras[random(0, palavras.length)].toUpperCase();
+
+for (let i = 0; i < 26; i++) {
+    letrasPresentes[i] = 0;
+}
+for (let i = 0; i < 5; i++) {
+    letrasPresentes[(palavra.charAt(i)).charCodeAt(0) - 65]++;
+}
