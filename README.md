@@ -13,5 +13,5 @@ Réplica do jogo Wordle do New York Times em português.
 
 <h1>Desenvolvimento</h1>
 
-<p>Esta réplica foi desenvolvida com HTML, CSS e JavaScript, sem utilizações de frameworks ou bibliotecas externas. Contendo os arquivos index.html, style.css e script.js e uma pasta para arquivos .svg. Para executar o programa, basta clonar o repositório e executar o arquivo index.html com um navegador de sua escolha.</p>
+<p>Esta réplica foi desenvolvida com HTML, CSS e JavaScript, sem utilização de frameworks ou bibliotecas externas. Contendo os arquivos index.html, style.css e script.js e uma pasta para arquivos .svg. Para executar o programa, basta clonar o repositório e executar o arquivo index.html com um navegador de sua escolha.</p>
 
