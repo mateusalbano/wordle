@@ -7,13 +7,9 @@ Réplica do jogo Wordle do New York Times em português.
 
 <p>Ao tentar responder, as letras que estão presentes na palavra e na posição correta são marcadas com verde, as que estão presentes e na posição errada são marcadas com amarelo, e as que não estão presentes são marcadas com vermelho.</p>
 
-<br>
-
 ![image](https://github.com/user-attachments/assets/69c37d13-0419-414a-b0f8-92f712323927)
 
 ![image](https://github.com/user-attachments/assets/cc61bfd7-3367-4d7e-b58f-54598a1fc4d2)
-
-<br>
 
 <h1>Desenvolvimento</h1>
 
