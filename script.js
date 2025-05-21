@@ -227,7 +227,7 @@ function input(palavraIn) {
     tentativa++;
     if (!vitoria && tentativa == 7) {
         mostrarPopup("A palavra era " + palavra + ".");
-    } else if (vitoria && tentativa == 7) {
+    } else if (vitoria) {
         mostrarPopup("Vitória!");
     }
 }
